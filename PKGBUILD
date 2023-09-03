@@ -1,6 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Tobias Roettger <toroettg@gmail.com>
 
+_name=appdirs
 pkgname=python-appdirs
 pkgver=1.4.4
 pkgrel=8
@@ -10,8 +11,9 @@ url="https://github.com/ActiveState/appdirs"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.io/packages/source/a/appdirs/appdirs-$pkgver.tar.gz")
-sha512sums=('8b0cdd9fd471d45b186aa47607691cf378dabd3edc7b7026a57bd6d6f57698e86f440818a5e23ba4288b35d6bb8cb6eb0106eae8aab09d8863ee15025d300883')
+source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
+sha512sums=('4c0e1e8dcd3f91b8b2d215b3f1e2ffaa85137fe054d07d3a2d442b1419e3b44e96fdea1620bd000bd3f4744f71b71f07280094f073df0ff008fac902af614656')
+b2sums=('cb9466f4a7f7c1d6f5b6d7ca031820ec4d3450afcaa8ba571e35387c3109ede4e2afbf2c1141a9d01d13798f55524d5efd3fa12546a9378abbda405353938d79')
 
 build() {
   cd appdirs-$pkgver
