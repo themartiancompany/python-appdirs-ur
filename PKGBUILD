@@ -10,24 +10,29 @@ arch=('any')
 url="https://github.com/ActiveState/appdirs"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-wheel'
+)
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz)
 sha512sums=('4c0e1e8dcd3f91b8b2d215b3f1e2ffaa85137fe054d07d3a2d442b1419e3b44e96fdea1620bd000bd3f4744f71b71f07280094f073df0ff008fac902af614656')
 b2sums=('cb9466f4a7f7c1d6f5b6d7ca031820ec4d3450afcaa8ba571e35387c3109ede4e2afbf2c1141a9d01d13798f55524d5efd3fa12546a9378abbda405353938d79')
 
 build() {
-  cd appdirs-$pkgver
-  python setup.py build
+  cd $_name-$pkgver
+  python -m build --wheel --no-isolation
 }
 
 check() {
-  cd appdirs-$pkgver
-  python setup.py test
+  cd $_name-$pkgver
+  python -m unittest discover -vs test
 }
 
 package() {
-  cd appdirs-$pkgver
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd $_name-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/$pkgname/
 }
 
