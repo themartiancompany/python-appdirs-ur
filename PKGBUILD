@@ -52,7 +52,7 @@ arch=(
 )
 _http="https://github.com"
 _ns="ActiveState"
-url="${_http}${_ns}/${_pkg}"
+url="${_http}/${_ns}/${_pkg}"
 license=(
   'MIT'
 )
