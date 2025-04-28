@@ -28,6 +28,15 @@
 
 _pkg=appdirs
 _py="python"
+_pyver="$( \
+  "${_py}" \
+    -V | \
+    awk \
+      '{print $2}')"
+_pymajver="${_pyver%.*}"
+_pyminver="${_pymajver#*.}"
+_pynextver="${_pymajver%.*}.$(( \
+  ${_pyminver} + 1))"
 pkgname="${_py}-appdirs"
 pkgver=1.4.4
 pkgrel=11
